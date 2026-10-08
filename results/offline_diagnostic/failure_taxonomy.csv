@@ -1,0 +1,10 @@
+category,inherit_count,reset_count,definition
+SUCCESS,0,1,Saved success=true; excluded from the failure denominator.
+PRODUCT_NOT_FOUND,27,30,No class-compatible product page actually opened and no higher-priority signature. Does not mean the catalog lacks a correct product.
+WRONG_PRODUCT_COMMITMENT,0,0,"A purchase attempt occurs on a product with an explicit gender contradiction in the title; conservative, no title-subtype guesses."
+OPTION_VISIBILITY_LOOP,3,1,"Class-compatible product; required-value option click; identical observation; a later selection-specific doubt while on that product; subsequent departure or cap, with no terminal purchase."
+SEARCH_LOOP,2,9,"At least 3 Search actions in the last 4 rounds, no newly inspected ASIN/new required option/detail tab in those rounds, and at least 2 late stagnant-search transitions."
+CORRECT_PRODUCT_NO_BUY,0,2,No Buy Now attempt; all requested option-click intents issued within one visit on either the paired-success-proven ASIN or a class-compatible candidate exposing exact requested labels without an explicit price violation. The broad label includes plausible products; separate proof fields prevent equating plausibility with correctness.
+PREMATURE_BUY,1,2,"A terminal partial/zero-reward purchase. Required-option clicks/attribute proof may be absent; this label describes incomplete purchase, not a proven causal reason for partial reward."
+BUDGET_LIMIT_AFTER_PROGRESS,13,3,"Cap hit after an observed new product inspection, newly changed detail view or first required option-click intent; no more specific signature dominates."
+OTHER_AMBIGUOUS,4,2,Insufficient semantic evidence or a nonterminal attempt to use an absent purchase control; secondary tags state the observed issue.

@@ -1,0 +1,25 @@
+{
+  "source": "n50_inherit step 43 / rule index 2",
+  "old_count": 29,
+  "edit_change": 0.5121951219512195,
+  "inherit_count": 30,
+  "reset_count": 2,
+  "inherit_rank": 2,
+  "reset_rank": 15,
+  "rule_numbers_changed": 14,
+  "identical_text_sets": true,
+  "count_difference": 28,
+  "first_divergence": "The same EDIT assignment changes count (30 vs 2); that same update's stable descending sort moves the target from rank 2 to rank 15.",
+  "remove_targeting_note": "This repository locates REMOVE and AGREE targets by rule-text substring, not the emitted number. EDIT targets an index. Renumbering alone therefore does not retarget an already-recorded REMOVE.",
+  "rule_count": 36,
+  "removal_resistance": {
+    "full_list_remove_strength": 3,
+    "inherit_calls_to_remove": 10,
+    "reset_calls_to_remove": 1,
+    "nonfull_strength": 1,
+    "inherit_calls_to_remove_nonfull": 30,
+    "reset_calls_to_remove_nonfull": 2,
+    "assumption": "Repeated REMOVE targets the same unchanged text; no other updates."
+  },
+  "evidence_level": 2
+}

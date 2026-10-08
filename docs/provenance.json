@@ -1,0 +1,45 @@
+{
+  "upstream_repository": "https://github.com/DylanZSZ/Memory-Collapse-Eval",
+  "upstream_commit": "adf347f67a81a19fc71d2529d09108c71a1f9712",
+  "source": {
+    "patch": "Working-tree diff limited to ExpeL rules.py/core.py",
+    "mechanism": "One frozen real pre-EDIT state, excluding subsequent ADD",
+    "stochasticity": "Six completed 43-call N=50 builds; three per policy",
+    "controlled_eval": "100 completed episodes on the same released 50 tasks",
+    "offline": "Rule-based diagnostic over those saved traces"
+  },
+  "sanitization": [
+    "Whitelisted scientific columns only",
+    "Excluded endpoint, host, process/session, credential and environment metadata",
+    "Excluded raw pools and full transcripts",
+    "Published a necessary attributed replay fixture",
+    "Token histograms/hashes replace six full memory dumps"
+  ],
+  "original_protected_files_verified_before_extraction": 2908,
+  "upstream_released_fingerprints_verified": 894,
+  "data_attribution": "Upstream-derived data retain CC BY 4.0 terms. Independently generated follow-up summaries are identified as adaptations.",
+  "licenses_verified_from": [
+    "LICENSE",
+    "LICENSE-DATA",
+    "NOTICE",
+    "agentgym/LICENSE"
+  ],
+  "public_result_sha256": {
+    "results/controlled_eval/paired_results_summary.csv": "055ef1ea4be91a5567da5198318f72a638aea7fb11227ffd9e0e1274a075062f",
+    "results/controlled_eval/summary.json": "ec0b68023a73ef7ae7b1560bdaa03f9c9f0bf0b144508e018466d6142c8c2569",
+    "results/mechanism/shared_pre_edit_replay.json": "fec2039a40034154568128c6656a5c56749e8bd27d49114c2b789a8cc9e4455a",
+    "results/mechanism/frozen_pre_edit_state.json": "953355693573c36e22d2e9339ca999865604128d2f2addd3dabf390350de10e0",
+    "results/offline_diagnostic/failure_taxonomy.csv": "c4d430226cb6edbbb8c31738ff9321a4876df2df7d73757396d51efacd959f48",
+    "results/offline_diagnostic/purchase_attempts_summary.csv": "1e6895d387eac3822ea2ac5775f32d7d2e88986d559a557c88be48dc315638a6",
+    "results/offline_diagnostic/feature_definitions.json": "dbc29e065ff434c3c346603b89e7ad0faa597f814c17349b02ec5f9769b98fef",
+    "results/offline_diagnostic/option_events_summary.csv": "6c00d374d299f1aa0b12fb62d1c8bf8d5267560c01e118c40b7716f8049cc5c3",
+    "results/offline_diagnostic/behavioral_summary.csv": "27684c1557f719b93ab0bfef69cf3fd7679987ef3b1d2a67e0b49d3a2e9545a9",
+    "results/offline_diagnostic/representative_cases.md": "18e50969ea72e2ee460b01578a2539e744274baecb80bd4e200bfcf77c66187a",
+    "results/offline_diagnostic/taxonomy_definitions.json": "fb1ac6050096f05463e88d1377ecf98e2ce5ed8cdaecf836668b71a5081966df",
+    "results/offline_diagnostic/episode_features.csv": "bd36a5ff1b0620b08534e671c652e48262370139275cf82258672e090f0d6ede",
+    "results/offline_diagnostic/summary.json": "9b2ea2607fd88eb822515a9611b0c36c20ded052f09e3d24ef5cd2d5956d6e9e",
+    "results/stochasticity/pairwise_summary.csv": "f7b7d7501a99a5eacedcbc08979ac11da0f4ac741ce5e0cf40694b5818825234",
+    "results/stochasticity/lexical_features.json": "80c14ac977a29af2bb40b90d610c04e4331be09f305adc2a983cb6a630132d16",
+    "results/stochasticity/summary.json": "85129508abd39648fe1c1bdd47be95ef65934b8007ea5776752c6bf2b774e551"
+  }
+}

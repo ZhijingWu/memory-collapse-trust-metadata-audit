@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "replay_counts": [
+    30,
+    2
+  ],
+  "replay_ranks": [
+    2,
+    15
+  ],
+  "lexical_pairs": 15,
+  "controlled_task_pairs": 50,
+  "offline_episodes": 100,
+  "option_events": 14,
+  "purchase_attempts": 15,
+  "relative_links": "all resolve",
+  "citation": "YAML syntax and citation attribution checked",
+  "security": {
+    "passed": true,
+    "files_scanned": 44,
+    "findings": [],
+    "scan_scope": "artifact excluding Git metadata"
+  },
+  "focused_policy_tests": 16,
+  "patch_applies_to_pinned_baseline": true,
+  "original_protected_files_byte_verified": 2908,
+  "released_fingerprints_preserved": 894,
+  "cli_help_checked": true,
+  "compact_features_verified_from_source": true,
+  "counterbalanced_dry_schedule_verified": true,
+  "paid_execution_performed": false
+}

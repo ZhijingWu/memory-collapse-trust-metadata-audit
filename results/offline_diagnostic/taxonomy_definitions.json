@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "category_definitions": {
+    "SUCCESS": {
+      "definition": "Saved success=true; excluded from the failure denominator."
+    },
+    "PRODUCT_NOT_FOUND": {
+      "definition": "No class-compatible product page actually opened and no higher-priority signature. Does not mean the catalog lacks a correct product."
+    },
+    "WRONG_PRODUCT_COMMITMENT": {
+      "definition": "A purchase attempt occurs on a product with an explicit gender contradiction in the title; conservative, no title-subtype guesses."
+    },
+    "OPTION_VISIBILITY_LOOP": {
+      "definition": "Class-compatible product; required-value option click; identical observation; a later selection-specific doubt while on that product; subsequent departure or cap, with no terminal purchase."
+    },
+    "SEARCH_LOOP": {
+      "definition": "At least 3 Search actions in the last 4 rounds, no newly inspected ASIN/new required option/detail tab in those rounds, and at least 2 late stagnant-search transitions."
+    },
+    "CORRECT_PRODUCT_NO_BUY": {
+      "definition": "No Buy Now attempt; all requested option-click intents issued within one visit on either the paired-success-proven ASIN or a class-compatible candidate exposing exact requested labels without an explicit price violation. The broad label includes plausible products; separate proof fields prevent equating plausibility with correctness."
+    },
+    "PREMATURE_BUY": {
+      "definition": "A terminal partial/zero-reward purchase. Required-option clicks/attribute proof may be absent; this label describes incomplete purchase, not a proven causal reason for partial reward."
+    },
+    "BUDGET_LIMIT_AFTER_PROGRESS": {
+      "definition": "Cap hit after an observed new product inspection, newly changed detail view or first required option-click intent; no more specific signature dominates."
+    },
+    "OTHER_AMBIGUOUS": {
+      "definition": "Insufficient semantic evidence or a nonterminal attempt to use an absent purchase control; secondary tags state the observed issue."
+    }
+  },
+  "precedence": [
+    "SUCCESS",
+    "terminal purchase: WRONG_PRODUCT_COMMITMENT if explicit gender contradiction else PREMATURE_BUY",
+    "OPTION_VISIBILITY_LOOP",
+    "CORRECT_PRODUCT_NO_BUY",
+    "SEARCH_LOOP",
+    "WRONG_PRODUCT_COMMITMENT",
+    "OTHER_AMBIGUOUS if unavailable Buy Now attempt",
+    "BUDGET_LIMIT_AFTER_PROGRESS",
+    "PRODUCT_NOT_FOUND",
+    "OTHER_AMBIGUOUS"
+  ],
+  "interpretation": "Mutually exclusive observable failure signatures; not causal allocations. Secondary tags overlap. Missing gold attributes stay unknown.",
+  "failure_denominator": 99,
+  "class_patterns": {
+    "computer armoires": "\\b(armoire|computer cabinet|computer workstation)\\b",
+    "dried fruits & raisins": "\\b(raisin|raisins|dried fruit|dried apricot|dried cherry|dried cherries|dried cranberry|dried cranberries)\\b",
+    "home office furniture sets": "\\b(furniture|table|desk|chair|stool)\\b",
+    "men's dress shirts": "\\b(shirt|shirts)\\b",
+    "men's henleys": "\\bhenley\\b",
+    "men's loafers & slip-ons": "\\b(loafer|loafers|slip.on|moccasin|moccasins)\\b",
+    "men's shirts": "\\b(shirt|shirts|t.shirt|t.shirts)\\b",
+    "men's shorts": "\\bshorts\\b",
+    "men's sleep & lounge": "\\b(pajama|pajamas|sleepwear|loungewear|pjs)\\b",
+    "men's sweaters": "\\b(sweater|sweaters|pullover|pullovers)\\b",
+    "men's t-shirts": "\\b(t.shirt|t.shirts|tee|tees)\\b",
+    "men's t-shirts & tanks": "\\b(t.shirt|t.shirts|tee|tees|tank|tanks)\\b",
+    "men's tuxedo shirts": "\\b(tuxedo|dress shirt)\\b",
+    "scrubs & body treatments": "\\b(scrub|scrubs|body treatment|exfoliat)\\b",
+    "sofa tables": "\\b(table|tables|console)\\b",
+    "throw blankets": "\\b(blanket|blankets|throw)\\b",
+    "wall art": "\\b(wall art|canvas|poster|painting|print|artwork)\\b",
+    "window coverings": "\\b(curtain|curtains|drape|drapes|blind|blinds|window shade)\\b",
+    "women's activewear": "\\b(shirt|shirts|activewear|sport|sports|running|athletic|workout)\\b",
+    "women's jumpsuits, rompers & overalls": "\\b(jumpsuit|jumpsuits|romper|rompers|overall|overalls|onesie|onesies)\\b",
+    "women's oxfords": "\\b(oxford|oxfords)\\b",
+    "women's pants": "\\b(pants|trousers|jeans|leggings)\\b",
+    "women's pumps": "\\b(pump|pumps|heel|heels)\\b",
+    "women's shorts": "\\bshorts\\b",
+    "women's tops, tees & blouses": "\\b(top|tops|tee|tees|t.shirt|t.shirts|blouse|blouses|sweatshirt|sweatshirts)\\b"
+  },
+  "strong_correct_product_evidence": "Only successful paired purchase transfer (task 5590) proves a task/product association."
+}

@@ -1,0 +1,517 @@
+{
+  "runs": {
+    "inherit_original": {
+      "label": "inherit_original",
+      "policy": "inherit",
+      "edit_count": 67,
+      "final_rule_count": 37,
+      "memory_chars": 7645,
+      "first_edit_step": 2,
+      "old_count": {
+        "n": 67,
+        "mean": 10.940298507462687,
+        "median": 9,
+        "min": 2,
+        "max": 32,
+        "population_sd": 8.154992239012614
+      },
+      "edit_change": {
+        "n": 67,
+        "mean": 0.33272486139778723,
+        "median": 0.3157894736842105,
+        "min": 0.03125,
+        "max": 0.8,
+        "population_sd": 0.18683103907141116
+      }
+    },
+    "inherit_rep2": {
+      "label": "inherit_rep2",
+      "policy": "inherit",
+      "edit_count": 62,
+      "final_rule_count": 37,
+      "memory_chars": 7672,
+      "first_edit_step": 2,
+      "old_count": {
+        "n": 62,
+        "mean": 10.693548387096774,
+        "median": 8.5,
+        "min": 2,
+        "max": 38,
+        "population_sd": 8.194389720584443
+      },
+      "edit_change": {
+        "n": 62,
+        "mean": 0.39703365123492657,
+        "median": 0.41763565891472865,
+        "min": 0.0,
+        "max": 0.7333333333333334,
+        "population_sd": 0.1770319429435819
+      }
+    },
+    "inherit_rep3": {
+      "label": "inherit_rep3",
+      "policy": "inherit",
+      "edit_count": 81,
+      "final_rule_count": 37,
+      "memory_chars": 7766,
+      "first_edit_step": 2,
+      "old_count": {
+        "n": 81,
+        "mean": 10.604938271604938,
+        "median": 8,
+        "min": 2,
+        "max": 30,
+        "population_sd": 7.510780749384541
+      },
+      "edit_change": {
+        "n": 81,
+        "mean": 0.3908536833918575,
+        "median": 0.4,
+        "min": 0.045454545454545414,
+        "max": 0.76,
+        "population_sd": 0.19306955118358465
+      }
+    },
+    "reset_original": {
+      "label": "reset_original",
+      "policy": "reset",
+      "edit_count": 80,
+      "final_rule_count": 40,
+      "memory_chars": 8519,
+      "first_edit_step": 2,
+      "old_count": {
+        "n": 80,
+        "mean": 2.45,
+        "median": 2.0,
+        "min": 2,
+        "max": 6,
+        "population_sd": 0.9604686356149273
+      },
+      "edit_change": {
+        "n": 80,
+        "mean": 0.39433807900268164,
+        "median": 0.4058277027027027,
+        "min": 0.050000000000000044,
+        "max": 0.819672131147541,
+        "population_sd": 0.19804601188982215
+      }
+    },
+    "reset_rep2": {
+      "label": "reset_rep2",
+      "policy": "reset",
+      "edit_count": 79,
+      "final_rule_count": 35,
+      "memory_chars": 7377,
+      "first_edit_step": 2,
+      "old_count": {
+        "n": 79,
+        "mean": 2.5443037974683542,
+        "median": 2,
+        "min": 2,
+        "max": 6,
+        "population_sd": 0.9250038433643094
+      },
+      "edit_change": {
+        "n": 79,
+        "mean": 0.38638859463377584,
+        "median": 0.3783783783783784,
+        "min": 0.05128205128205132,
+        "max": 0.8478260869565217,
+        "population_sd": 0.2061644207283215
+      }
+    },
+    "reset_rep3": {
+      "label": "reset_rep3",
+      "policy": "reset",
+      "edit_count": 92,
+      "final_rule_count": 35,
+      "memory_chars": 7018,
+      "first_edit_step": 2,
+      "old_count": {
+        "n": 92,
+        "mean": 2.391304347826087,
+        "median": 2.0,
+        "min": 2,
+        "max": 8,
+        "population_sd": 1.0103434816193262
+      },
+      "edit_change": {
+        "n": 92,
+        "mean": 0.4267944034491608,
+        "median": 0.45141065830721006,
+        "min": 0.04166666666666663,
+        "max": 0.8372093023255813,
+        "population_sd": 0.22605341858189731
+      }
+    }
+  },
+  "groups": {
+    "inherit_AA": {
+      "n_pairs": 3,
+      "before_edit_divergence_pairs": 3,
+      "metrics": {
+        "exact_rule_distance": {
+          "n": 3,
+          "mean": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_sd": 0.0
+        },
+        "lexical_token_jaccard_distance": {
+          "n": 3,
+          "mean": 0.5807009983304432,
+          "median": 0.5752808988764044,
+          "min": 0.5672645739910314,
+          "max": 0.5995575221238938,
+          "population_sd": 0.013729329513774256
+        },
+        "lexical_count_cosine_distance": {
+          "n": 3,
+          "mean": 0.08374686545587855,
+          "median": 0.08091362368854094,
+          "min": 0.080883023175924,
+          "max": 0.0894439495031707,
+          "population_sd": 0.00402846613318073
+        },
+        "ordering_distance": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "max": null,
+          "population_sd": null
+        },
+        "absolute_edit_count_difference": {
+          "n": 3,
+          "mean": 12.666666666666666,
+          "median": 14,
+          "min": 5,
+          "max": 19,
+          "population_sd": 5.792715732327589
+        },
+        "absolute_rule_count_difference": {
+          "n": 3,
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "population_sd": 0.0
+        },
+        "absolute_memory_chars_difference": {
+          "n": 3,
+          "mean": 80.66666666666667,
+          "median": 94,
+          "min": 27,
+          "max": 121,
+          "population_sd": 39.51652256405611
+        },
+        "absolute_mean_old_count_difference": {
+          "n": 3,
+          "mean": 0.22357349057183265,
+          "median": 0.24675012036591326,
+          "min": 0.08861011549183573,
+          "max": 0.335360235857749,
+          "population_sd": 0.10205969691511294
+        },
+        "absolute_mean_edit_change_difference": {
+          "n": 3,
+          "mean": 0.04287252655809289,
+          "median": 0.05812882199407027,
+          "min": 0.0061799678430690674,
+          "max": 0.06430878983713934,
+          "population_sd": 0.026067935596909664
+        }
+      }
+    },
+    "reset_AA": {
+      "n_pairs": 3,
+      "before_edit_divergence_pairs": 3,
+      "metrics": {
+        "exact_rule_distance": {
+          "n": 3,
+          "mean": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_sd": 0.0
+        },
+        "lexical_token_jaccard_distance": {
+          "n": 3,
+          "mean": 0.5657237253335153,
+          "median": 0.5763888888888888,
+          "min": 0.5348258706467661,
+          "max": 0.585956416464891,
+          "population_sd": 0.02219448075779192
+        },
+        "lexical_count_cosine_distance": {
+          "n": 3,
+          "mean": 0.11244001571889121,
+          "median": 0.11063003929701831,
+          "min": 0.10410249671816563,
+          "max": 0.12258751114148969,
+          "population_sd": 0.00765423414603214
+        },
+        "ordering_distance": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "max": null,
+          "population_sd": null
+        },
+        "absolute_edit_count_difference": {
+          "n": 3,
+          "mean": 8.666666666666666,
+          "median": 12,
+          "min": 1,
+          "max": 13,
+          "population_sd": 5.436502143433364
+        },
+        "absolute_rule_count_difference": {
+          "n": 3,
+          "mean": 3.3333333333333335,
+          "median": 5,
+          "min": 0,
+          "max": 5,
+          "population_sd": 2.3570226039551585
+        },
+        "absolute_memory_chars_difference": {
+          "n": 3,
+          "mean": 1000.6666666666666,
+          "median": 1142,
+          "min": 359,
+          "max": 1501,
+          "population_sd": 476.81046781947043
+        },
+        "absolute_mean_old_count_difference": {
+          "n": 3,
+          "mean": 0.10199963309484487,
+          "median": 0.09430379746835404,
+          "min": 0.05869565217391326,
+          "max": 0.1529994496422673,
+          "population_sd": 0.03888205214689299
+        },
+        "absolute_mean_edit_change_difference": {
+          "n": 3,
+          "mean": 0.026937205876923314,
+          "median": 0.03245632444647917,
+          "min": 0.007949484368905801,
+          "max": 0.04040580881538497,
+          "population_sd": 0.013813007190866453
+        }
+      }
+    },
+    "pooled_AA": {
+      "n_pairs": 6,
+      "before_edit_divergence_pairs": 6,
+      "metrics": {
+        "exact_rule_distance": {
+          "n": 6,
+          "mean": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_sd": 0.0
+        },
+        "lexical_token_jaccard_distance": {
+          "n": 6,
+          "mean": 0.5732123618319793,
+          "median": 0.5758348938826466,
+          "min": 0.5348258706467661,
+          "max": 0.5995575221238938,
+          "population_sd": 0.019915431431656718
+        },
+        "lexical_count_cosine_distance": {
+          "n": 6,
+          "mean": 0.09809344058738488,
+          "median": 0.09677322311066816,
+          "min": 0.080883023175924,
+          "max": 0.12258751114148969,
+          "population_sd": 0.015595901316634131
+        },
+        "ordering_distance": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "max": null,
+          "population_sd": null
+        },
+        "absolute_edit_count_difference": {
+          "n": 6,
+          "mean": 10.666666666666666,
+          "median": 12.5,
+          "min": 1,
+          "max": 19,
+          "population_sd": 5.962847939999439
+        },
+        "absolute_rule_count_difference": {
+          "n": 6,
+          "mean": 1.6666666666666667,
+          "median": 0.0,
+          "min": 0,
+          "max": 5,
+          "population_sd": 2.3570226039551585
+        },
+        "absolute_memory_chars_difference": {
+          "n": 6,
+          "mean": 540.6666666666666,
+          "median": 240.0,
+          "min": 27,
+          "max": 1501,
+          "population_sd": 571.012161769685
+        },
+        "absolute_mean_old_count_difference": {
+          "n": 6,
+          "mean": 0.16278656183333876,
+          "median": 0.12365162355531067,
+          "min": 0.05869565217391326,
+          "max": 0.335360235857749,
+          "population_sd": 0.09828045869977381
+        },
+        "absolute_mean_edit_change_difference": {
+          "n": 6,
+          "mean": 0.0349048662175081,
+          "median": 0.03643106663093207,
+          "min": 0.0061799678430690674,
+          "max": 0.06430878983713934,
+          "population_sd": 0.022330513390262815
+        }
+      }
+    },
+    "AB": {
+      "n_pairs": 9,
+      "before_edit_divergence_pairs": 9,
+      "metrics": {
+        "exact_rule_distance": {
+          "n": 9,
+          "mean": 1.0,
+          "median": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_sd": 0.0
+        },
+        "lexical_token_jaccard_distance": {
+          "n": 9,
+          "mean": 0.5734736384004079,
+          "median": 0.5704057279236276,
+          "min": 0.5517241379310345,
+          "max": 0.6053215077605322,
+          "population_sd": 0.015096086482656666
+        },
+        "lexical_count_cosine_distance": {
+          "n": 9,
+          "mean": 0.1040761074229048,
+          "median": 0.1031201999756548,
+          "min": 0.07571580716021609,
+          "max": 0.15155772364258413,
+          "population_sd": 0.021002060444312257
+        },
+        "ordering_distance": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "min": null,
+          "max": null,
+          "population_sd": null
+        },
+        "absolute_edit_count_difference": {
+          "n": 9,
+          "mean": 14.333333333333334,
+          "median": 13,
+          "min": 1,
+          "max": 30,
+          "population_sd": 8.993825042154695
+        },
+        "absolute_rule_count_difference": {
+          "n": 9,
+          "mean": 2.3333333333333335,
+          "median": 2,
+          "min": 2,
+          "max": 3,
+          "population_sd": 0.4714045207910317
+        },
+        "absolute_memory_chars_difference": {
+          "n": 9,
+          "mean": 606.1111111111111,
+          "median": 654,
+          "min": 268,
+          "max": 874,
+          "population_sd": 219.20991687038475
+        },
+        "absolute_mean_old_count_difference": {
+          "n": 9,
+          "mean": 8.284392340289985,
+          "median": 8.243548387096773,
+          "min": 8.060634474136585,
+          "max": 8.5489941596366,
+          "population_sd": 0.1552600254964925
+        },
+        "absolute_mean_edit_change_difference": {
+          "n": 9,
+          "mean": 0.0329264531517884,
+          "median": 0.029760752214234243,
+          "min": 0.002695572232244925,
+          "max": 0.09406954205137358,
+          "population_sd": 0.029995927198501166
+        }
+      }
+    }
+  },
+  "contrasts": {
+    "exact_rule_distance": {
+      "AB_mean_minus_AA_mean": 0.0,
+      "AB_min_above_AA_max": false,
+      "ranges_overlap": true
+    },
+    "lexical_token_jaccard_distance": {
+      "AB_mean_minus_AA_mean": 0.00026127656842855895,
+      "AB_min_above_AA_max": false,
+      "ranges_overlap": true
+    },
+    "lexical_count_cosine_distance": {
+      "AB_mean_minus_AA_mean": 0.005982666835519915,
+      "AB_min_above_AA_max": false,
+      "ranges_overlap": true
+    },
+    "ordering_distance": {
+      "AB_mean_minus_AA_mean": null,
+      "AB_min_above_AA_max": null,
+      "ranges_overlap": null
+    },
+    "absolute_edit_count_difference": {
+      "AB_mean_minus_AA_mean": 3.666666666666668,
+      "AB_min_above_AA_max": false,
+      "ranges_overlap": true
+    },
+    "absolute_rule_count_difference": {
+      "AB_mean_minus_AA_mean": 0.6666666666666667,
+      "AB_min_above_AA_max": false,
+      "ranges_overlap": true
+    },
+    "absolute_memory_chars_difference": {
+      "AB_mean_minus_AA_mean": 65.44444444444446,
+      "AB_min_above_AA_max": false,
+      "ranges_overlap": true
+    },
+    "absolute_mean_old_count_difference": {
+      "AB_mean_minus_AA_mean": 8.121605778456646,
+      "AB_min_above_AA_max": true,
+      "ranges_overlap": false
+    },
+    "absolute_mean_edit_change_difference": {
+      "AB_mean_minus_AA_mean": -0.001978413065719699,
+      "AB_min_above_AA_max": false,
+      "ranges_overlap": true
+    }
+  },
+  "caveats": [
+    "Three independent builds per policy; pairwise distances are dependent, not 15 independent observations.",
+    "Exact-string overlap may saturate at zero despite shared meanings.",
+    "Ordering is undefined when fewer than two exact shared strings exist.",
+    "Lexical similarity does not measure semantic correctness.",
+    "No performance evaluation or independent-run causal attribution."
+  ],
+  "all_six_compression_calls": 258
+}

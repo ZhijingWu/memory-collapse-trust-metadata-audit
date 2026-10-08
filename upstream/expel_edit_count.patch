@@ -1,0 +1,191 @@
+diff --git a/agentgym/agentenv/agentenv/memory/methods/expel/core.py b/agentgym/agentenv/agentenv/memory/methods/expel/core.py
+index ee56fbe..7e77211 100644
+--- a/agentgym/agentenv/agentenv/memory/methods/expel/core.py
++++ b/agentgym/agentenv/agentenv/memory/methods/expel/core.py
+@@ -27,7 +27,7 @@ from typing import Optional
+ from ...base import BaseMemory, PoolEntry, TaskMeta
+ from ...pool import render_trajectory
+ from ...registry import register
+-from .rules import parse_rules, render_rules, update_rules
++from .rules import EDIT_COUNT_POLICIES, parse_rules, render_rules, update_rules
+ 
+ _PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
+ 
+@@ -92,11 +92,15 @@ class ExpeL(BaseMemory):
+         max_traj_chars: Optional[int] = None,
+         save_intermediate: bool = True,
+         rounds: int = 1,
++        expel_edit_count_policy: str = "inherit",
+         **kwargs,
+     ) -> None:
+         """Compress pool into a rule list (upstream-faithful).
+ 
+         Args:
++            expel_edit_count_policy: only changes applied EDIT counts; defaults
++                to the original inherit behavior. EDIT events are persisted in
++                <artifact stem>.edits.jsonl and the resumable checkpoint.
+             max_traj_chars: optional per-trajectory char cap for the
+                 compare/success critique input. Default None = no
+                 truncation. Upstream ExpeL only truncates in `failure_critique`
+@@ -111,6 +115,8 @@ class ExpeL(BaseMemory):
+         # setup can't produce both a success and a fail for the same task naturally.
+         # Tasks where pool has both success+fail pair normally (rare in our setup).
+         # Tasks with only success → success_critique chunks (unchanged).
++        if expel_edit_count_policy not in EDIT_COUNT_POLICIES:
++            raise ValueError(f"unknown expel_edit_count_policy: {expel_edit_count_policy!r}")
+         out_path = Path(out_path)
+         out_path.parent.mkdir(parents=True, exist_ok=True)
+         # Method-specific dir (avoid collision with ACE on shared name).
+@@ -118,6 +124,7 @@ class ExpeL(BaseMemory):
+         if save_intermediate:
+             intermediate_dir.mkdir(exist_ok=True)
+         ckpt_path = out_path.parent / f"{out_path.stem}.ckpt.json"
++        edit_log_path = out_path.parent / f"{out_path.stem}.edits.jsonl"
+ 
+         # Env-specific prompt variant (e.g. webshop) reproduces the upstream
+         # ExpeL critique wording verbatim; falls back to the env-agnostic
+@@ -179,18 +186,30 @@ class ExpeL(BaseMemory):
+         step = 0
+         # ---- Resume from checkpoint ----------------------------------------
+         skip_steps = 0
++        edit_events: list[dict] = []
++        ckpt = {}
+         if ckpt_path.exists():
+             try:
+                 import json as _json
+                 ckpt = _json.loads(ckpt_path.read_text())
+                 skip_steps = int(ckpt.get("step_done", 0))
+                 rules = [tuple(r) for r in ckpt.get("rules", [])]
++                edit_events = list(ckpt.get("edit_events", []))
+                 print(f"[expel] RESUMING from {ckpt_path}: step_done={skip_steps}, "
+                       f"rules={len(rules)}", flush=True)
+             except Exception as exc:
+                 print(f"[expel] checkpoint unreadable ({exc}); fresh", flush=True)
+                 skip_steps = 0
+                 rules = []
++                edit_events = []
++                ckpt = {}
++        # Legacy checkpoints belong to inherit. Never silently mix policies.
++        checkpoint_policy = ckpt.get("expel_edit_count_policy", "inherit")
++        if ckpt and checkpoint_policy != expel_edit_count_policy:
++            raise ValueError(
++                f"checkpoint policy {checkpoint_policy!r} differs from requested "
++                f"{expel_edit_count_policy!r}; use a separate output directory"
++            )
+ 
+         def run_step(prompt: str, kind: str) -> None:
+             nonlocal rules, step
+@@ -208,7 +227,11 @@ class ExpeL(BaseMemory):
+                 "role": "user", "content": full_prompt, "reasoning_content": None,
+             }])
+             ops = parse_rules(raw or "")
+-            rules = update_rules(rules, ops, list_full=list_full)
++            rules = update_rules(
++                rules, ops, list_full=list_full,
++                expel_edit_count_policy=expel_edit_count_policy,
++                edit_events=edit_events, step=step,
++            )
+             print(f"[expel] step {step} ({kind}) | ops parsed={len(ops)} | "
+                   f"rules={len(rules)}", flush=True)
+             # per-step durable save (atomic: SIGTERM/preempt-safe + resumable).
+@@ -218,9 +241,17 @@ class ExpeL(BaseMemory):
+             playbook_now = render_rules(rules) or "(no rules induced)"
+             _atomic_write(out_path, playbook_now)
+             import json as _json
++            # Rebuild the event sidecar from checkpoint-backed history so a
++            # resumed in-flight step cannot append duplicate EDIT records.
++            _atomic_write(edit_log_path, "".join(
++                _json.dumps(event, ensure_ascii=False) + "\n"
++                for event in edit_events
++            ))
+             _atomic_write(ckpt_path, _json.dumps({
+                 "step_done": step,
+                 "rules": [[t, c] for t, c in rules],
++                "expel_edit_count_policy": expel_edit_count_policy,
++                "edit_events": edit_events,
+             }, ensure_ascii=False))
+             if save_intermediate:
+                 (intermediate_dir / f"step_{step:03d}.txt").write_text(playbook_now)
+diff --git a/agentgym/agentenv/agentenv/memory/methods/expel/rules.py b/agentgym/agentenv/agentenv/memory/methods/expel/rules.py
+index c154e62..e735ec7 100644
+--- a/agentgym/agentenv/agentenv/memory/methods/expel/rules.py
++++ b/agentgym/agentenv/agentenv/memory/methods/expel/rules.py
+@@ -6,7 +6,7 @@ re-implemented to keep this package self-contained (no langchain dep).
+ A rule is `(text, count)`. Counts encode importance:
+     ADD    → append with count=2
+     AGREE  → +1
+-    EDIT   → replace text, +1
++    EDIT   → replace text, +1 by default (or reset to ADD's initial count)
+     REMOVE → -1 (or -3 if list is at the cap)
+ Rules with count ≤ 0 are dropped. List is sorted by count desc.
+ """
+@@ -17,6 +17,16 @@ import re
+ from typing import List, Tuple
+ 
+ Rule = Tuple[str, int]
++ADD_INITIAL_COUNT = 2
++EDIT_COUNT_POLICIES = ("inherit", "reset")
++
++
++def token_jaccard(old_text: str, new_text: str) -> float:
++    """Jaccard over unique, case-folded Unicode word tokens; empty/empty = 1."""
++    old_tokens = set(re.findall(r"\w+", old_text.casefold()))
++    new_tokens = set(re.findall(r"\w+", new_text.casefold()))
++    union = old_tokens | new_tokens
++    return len(old_tokens & new_tokens) / len(union) if union else 1.0
+ 
+ 
+ _OP_RE = re.compile(r"((?:REMOVE|EDIT|ADD|AGREE)(?: \d+|)): (?:[a-zA-Z\s\d]+: |)(.*)")
+@@ -61,6 +71,9 @@ def update_rules(
+     operations: List[Tuple[str, str]],
+     *,
+     list_full: bool = False,
++    expel_edit_count_policy: str = "inherit",
++    edit_events: list[dict] | None = None,
++    step: int | None = None,
+ ) -> List[Rule]:
+     """Apply parsed operations to a rule list. Returns new sorted list.
+ 
+@@ -68,7 +81,13 @@ def update_rules(
+         rules: current (text, count) list.
+         operations: parsed `(op_str, rule_text)` pairs.
+         list_full: if True, REMOVE applies -3 (paper's behavior when at cap).
++        expel_edit_count_policy: inherit = old count + 1; reset = ADD initial count.
++        edit_events: optional sink for applied EDITs (redirected AGREEs excluded).
++        step: compression step recorded in each EDIT event. rule_index is 1-based
++            at application time, before pruning and sorting; it is not a stable ID.
+     """
++    if expel_edit_count_policy not in EDIT_COUNT_POLICIES:
++        raise ValueError(f"unknown expel_edit_count_policy: {expel_edit_count_policy!r}")
+     rules = list(rules)
+     ops = list(operations)
+ 
+@@ -123,10 +142,26 @@ def update_rules(
+                 rule_num = int(op_str.split(" ")[1]) - 1
+                 if rule_num < 0 or rule_num >= len(rules):
+                     continue
+-                rules[rule_num] = (text, rules[rule_num][1] + 1)
++                old_text, old_count = rules[rule_num]
++                new_count = (
++                    old_count + 1
++                    if expel_edit_count_policy == "inherit" else ADD_INITIAL_COUNT
++                )
++                rules[rule_num] = (text, new_count)
++                if edit_events is not None:
++                    edit_events.append({
++                        "step": step,
++                        "rule_index": rule_num + 1,
++                        "old_text": old_text,
++                        "new_text": text,
++                        "old_count": old_count,
++                        "new_count": new_count,
++                        "edit_count_policy": expel_edit_count_policy,
++                        "edit_change": 1.0 - token_jaccard(old_text, text),
++                    })
+ 
+             elif op_type == "ADD":
+-                rules.append((text, 2))
++                rules.append((text, ADD_INITIAL_COUNT))
+ 
+     # 3) Drop dead rules, sort by count desc.
+     rules = [r for r in rules if r[1] > 0]

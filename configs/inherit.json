@@ -1,0 +1,6 @@
+{
+  "max_num_rules": 20,
+  "success_chunk_size": 8,
+  "rounds": 1,
+  "expel_edit_count_policy": "inherit"
+}

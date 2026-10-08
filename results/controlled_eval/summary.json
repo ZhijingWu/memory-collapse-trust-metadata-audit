@@ -1,0 +1,97 @@
+{
+  "paired_tasks": 50,
+  "episodes": 100,
+  "aggregate": {
+    "inherit": {
+      "successes": 0,
+      "denominator": 50,
+      "success_rate": 0.0,
+      "mean_reward": 0.013333333333333332,
+      "episode_length_action_attempts": {
+        "mean": 9.86,
+        "median": 10.0,
+        "min": 3,
+        "max": 10
+      },
+      "conversation_message_count": {
+        "mean": 22.72,
+        "median": 23.0,
+        "min": 9,
+        "max": 23
+      },
+      "model_calls_per_task": {
+        "mean": 9.86,
+        "median": 10.0,
+        "min": 3,
+        "max": 10
+      },
+      "round_limit_reached": 49,
+      "terminal_purchase": 1,
+      "invalid_action_rounds": 0,
+      "truncated_calls": 0,
+      "transport_retries": 0
+    },
+    "reset": {
+      "successes": 1,
+      "denominator": 50,
+      "success_rate": 0.02,
+      "mean_reward": 0.05,
+      "episode_length_action_attempts": {
+        "mean": 9.74,
+        "median": 10.0,
+        "min": 3,
+        "max": 10
+      },
+      "conversation_message_count": {
+        "mean": 22.48,
+        "median": 23.0,
+        "min": 9,
+        "max": 23
+      },
+      "model_calls_per_task": {
+        "mean": 9.74,
+        "median": 10.0,
+        "min": 3,
+        "max": 10
+      },
+      "round_limit_reached": 47,
+      "terminal_purchase": 3,
+      "invalid_action_rounds": 0,
+      "truncated_calls": 0,
+      "transport_retries": 0
+    }
+  },
+  "paired_outcomes": {
+    "reset_wins": 1,
+    "inherit_wins": 0,
+    "both_success": 0,
+    "both_fail": 49
+  },
+  "discordant_pairs": 1,
+  "paired_success_rate_difference_reset_minus_inherit": 0.02,
+  "exact_two_sided_mcnemar_binomial_p": 1.0,
+  "discordant_task_ids": [
+    5590
+  ],
+  "model": "gpt-5.4-mini",
+  "temperature": 0,
+  "reasoning_effort": "none",
+  "max_completion_tokens": 1024,
+  "max_rounds": 10,
+  "counterbalance": "Odd released-stream positions inherit/reset; even reset/inherit.",
+  "memory_control": {
+    "rules": 36,
+    "characters": 7416,
+    "identical_text_multisets": true,
+    "different_ordering": true,
+    "counts_visible": false
+  },
+  "interpretation": "Does not establish a reliable downstream benefit",
+  "limitations": [
+    "Single controlled shared state",
+    "One rollout per arm/task",
+    "Temperature zero does not guarantee identical API responses",
+    "Memory content and scaffold fixed; ordering and induced numbers differ",
+    "No confirmatory replicate; no claim about overall memory collapse"
+  ]
+}

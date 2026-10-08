@@ -1,0 +1,21 @@
+Data and attribution scope
+
+Original released Memory-Collapse-Eval results/data retain Creative Commons
+Attribution 4.0 International (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+https://creativecommons.org/licenses/by/4.0/legalcode
+
+Credit: Dylan Zhang, Yanshan Lin, Zhengkun Wu, Yihang Sun, Bingxuan Li, Dianqi Li
+and Hao Peng, Useful Memories Become Faulty When Continuously Updated by LLMs,
+arXiv:2605.12978 (2026).
+Source: https://github.com/DylanZSZ/Memory-Collapse-Eval
+
+This independent follow-up adapts a necessary rule-state fixture and publishes
+compact derived results. Adaptations and independently generated follow-up
+analyses are identified in docs/provenance.json and upstream/README.md.
+Zhijing Wu's follow-up data contributions are made available under CC BY 4.0
+alongside the preserved upstream attribution. The MIT LICENSE applies to
+original analysis code and documentation, not a relicensing of upstream data.
+
+Underlying benchmarks and any provider output terms retain their own scope.
+The full upstream dataset is not redistributed here.

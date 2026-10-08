@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+type: software
+title: "Trust-Metadata Inheritance in Continually Updated LLM Memory: A Mechanism-Level Audit of ExpeL"
+message: "Cite this independent artifact and credit the referenced upstream paper."
+authors:
+  - given-names: Zhijing
+    family-names: Wu
+repository-code: "https://github.com/ZhijingWu/memory-collapse-trust-metadata-audit"
+url: "https://github.com/ZhijingWu/memory-collapse-trust-metadata-audit"
+version: "0.1.0"
+date-released: "2026-10-08"
+license: MIT
+keywords:
+  - llm-memory
+  - mechanism-audit
+  - reproducibility
+references:
+  - type: article
+    title: "Useful Memories Become Faulty When Continuously Updated by LLMs"
+    authors:
+      - given-names: Dylan
+        family-names: Zhang
+      - given-names: Yanshan
+        family-names: Lin
+      - given-names: Zhengkun
+        family-names: Wu
+      - given-names: Yihang
+        family-names: Sun
+      - given-names: Bingxuan
+        family-names: Li
+      - given-names: Dianqi
+        family-names: Li
+      - given-names: Hao
+        family-names: Peng
+    year: 2026
+    month: 5
+    journal: "arXiv preprint arXiv:2605.12978"
+    url: "https://arxiv.org/abs/2605.12978"

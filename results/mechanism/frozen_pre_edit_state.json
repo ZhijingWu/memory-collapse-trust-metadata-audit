@@ -1,0 +1,182 @@
+{
+  "source_run": "n50_inherit",
+  "source_step": 43,
+  "source_event": {
+    "step": 43,
+    "rule_index": 2,
+    "old_text": "When search results are weak, repetitive, or overly broad, change the search strategy materially by centering the most distinctive unresolved requirement and the core item type, rather than making small keyword changes.",
+    "new_text": "When search results are weak, repetitive, or overly broad, shift the search strategy to emphasize the most distinctive unresolved requirement and the core item type; avoid minor keyword tweaks that keep returning the same candidate pool.",
+    "old_count": 29,
+    "new_count": 30,
+    "edit_count_policy": "inherit",
+    "edit_change": 0.5121951219512195
+  },
+  "pre_edit_rules": [
+    [
+      "Confirm every critical requirement on the product page before buying; do not rely on search results or assumed variants, and verify any required attribute on a clearly linked variant page when it is not directly visible.",
+      38
+    ],
+    [
+      "When search results are weak, repetitive, or overly broad, change the search strategy materially by centering the most distinctive unresolved requirement and the core item type, rather than making small keyword changes.",
+      29
+    ],
+    [
+      "Compare all plausible candidates against the full requirement set before clicking through, and prioritize listings with explicit evidence across title, options, product details, and price; do not commit to near-matches or infer missing attributes from similarity.",
+      16
+    ],
+    [
+      "Verify required attributes on the product detail page using selectable options and item details; confirm every explicit constraint before buying, and if any constraint remains unverified or unavailable, keep searching or inspect other listings, including checking for ingredient or nutrition details when relevant.",
+      14
+    ],
+    [
+      "When a result appears promising, evaluate all required constraints together; if any critical requirement is unsupported, ambiguous, or only implied, discard it and continue searching without overcommitting to that candidate.",
+      10
+    ],
+    [
+      "Do not assume a listing satisfies a constraint just because the title seems related; verify the exact requested variant and all required attributes on the product page and in the final purchase summary before buying.",
+      10
+    ],
+    [
+      "Before buying, confirm that the selected options are reflected in the final purchase summary and that every critical requirement is explicitly supported on the product page and, when shown, in the final selected variant state.",
+      11
+    ],
+    [
+      "If any required attribute is missing, unavailable, or cannot be verified, backtrack and continue searching instead of choosing a partial or near match.",
+      5
+    ],
+    [
+      "When a product page shows selectable options, verify that changing an option visibly updates the item state; if the selection is unclear or not reflected on the page, do not buy.",
+      5
+    ],
+    [
+      "When multiple plausible results appear, compare them against the full requirement set before clicking through and choose the listing with the strongest explicit evidence across title, options, and product details; do not overcommit to the first near-match.",
+      4
+    ],
+    [
+      "Do not commit to a candidate after only one promising signal; cross-check the title, options, and price together, and if any key requirement remains unconfirmed, continue searching before taking the purchase action.",
+      4
+    ],
+    [
+      "If a candidate appears to match, pause to verify the exact selected variant and purchase summary before buying; do not assume the default page state reflects the needed configuration.",
+      4
+    ],
+    [
+      "If repeated searches return only poor matches, broaden or pivot the search strategy using fewer core item terms and the most distinctive unresolved constraint, then narrow again only after a more relevant candidate appears.",
+      4
+    ],
+    [
+      "Prefer listings where the product page explicitly supports all key constraints; treat near matches or differently named variants as insufficient until verified.",
+      3
+    ],
+    [
+      "Before leaving a product page, check whether the key required attributes are actually supported by the available options; if not, return to search rather than treating the page as a usable near-match.",
+      3
+    ],
+    [
+      "Do not infer that a product satisfies a constraint from category similarity or partial overlap; purchase only after each required attribute is explicitly confirmed on the product page.",
+      2
+    ],
+    [
+      "When a promising result lacks proof for any key constraint, treat it as unconfirmed and continue searching rather than buying based on overall similarity.",
+      2
+    ],
+    [
+      "Treat category words in the query as a search guide, not as proof that the item is the desired product; only buy when the item type and all required attributes are explicitly confirmed on the product page.",
+      2
+    ],
+    [
+      "If a candidate fails to expose the needed options or evidence, return to search immediately and use a broader or more targeted query instead of spending steps on irrelevant pages or weak signals.",
+      2
+    ],
+    [
+      "When a candidate is missing one required attribute but partially matches others, treat it as a fallback only if the missing attribute can be confirmed elsewhere on the page; otherwise continue searching.",
+      2
+    ],
+    [
+      "if a required option is not visible on the current page, return to search rather than inferring it or proceeding to checkout.",
+      2
+    ],
+    [
+      "If a page confirms some constraints but not all, treat it as a candidate only after the missing requirements are explicitly verified on the same page or on a clearly linked variant page; otherwise continue searching.",
+      2
+    ],
+    [
+      "Before buying, confirm that the selected options are reflected in the final purchase summary, not just available somewhere on the page.",
+      2
+    ],
+    [
+      "If an option label appears to match the request only approximately, treat it as a candidate requiring verification and continue searching until the exact requested variant is confirmed.",
+      2
+    ],
+    [
+      "Before taking a terminal action, confirm the current page exposes the actual purchase control and that the selected variant still matches all required constraints; if not, return to search or navigate to the correct variant page.",
+      2
+    ],
+    [
+      "If repeated searches keep surfacing the same non-matching candidate, change the search strategy substantially rather than rephrasing around the same terms.",
+      2
+    ],
+    [
+      "If a promising candidate still leaves any key requirement unverified after one inspection, return to search and use a different query strategy instead of spending further steps on the same weak candidate.",
+      2
+    ],
+    [
+      "If several searches return similar irrelevant results, change the search strategy materially by shifting the core product phrasing, not just rearranging the same keywords.",
+      2
+    ],
+    [
+      "If repeated searches still fail to reveal a clearly verified match, pause and reassess which constraint is most likely filtering results poorly, then pivot the search strategy instead of continuing with similar queries.",
+      2
+    ],
+    [
+      "If a product page does not show any new verifying information after repeated option selections, stop retrying the same control and return to search or another candidate.",
+      2
+    ],
+    [
+      "If a likely candidate lacks the key distinguishing attribute in visible options or details, do not spend additional steps on it; immediately pivot to a different listing or a more targeted search strategy.",
+      2
+    ],
+    [
+      "If repeated searches produce mostly irrelevant results, infer that one or more query constraints may be over-filtering the search and pivot to a materially different search formulation before continuing.",
+      2
+    ],
+    [
+      "Treat partial matches as provisional only; if a candidate looks close but any key attribute remains unverified after one check, switch to a different candidate or query rather than spending extra steps confirming the same weak lead.",
+      2
+    ],
+    [
+      "If a candidate seems acceptable only after interpretation or inference, treat it as unverified and continue searching until the key attributes are directly visible on the product page.",
+      2
+    ],
+    [
+      "After a non-match is identified, avoid repeating searches that keep the same candidate pool; intentionally shift to a different query angle, synonym set, or constraint emphasis to escape local search traps.",
+      2
+    ],
+    [
+      "Treat any required attribute that is only implied, approximate, or inferential as unverified; continue searching until the exact variant is explicitly shown on the product page or in the final summary.",
+      2
+    ]
+  ],
+  "parsed_operation": [
+    "EDIT 2",
+    "When search results are weak, repetitive, or overly broad, shift the search strategy to emphasize the most distinctive unresolved requirement and the core item type; avoid minor keyword tweaks that keep returning the same candidate pool."
+  ],
+  "max_num_rules": 20,
+  "list_full": true,
+  "old_count": 29,
+  "edit_change": 0.5121951219512195,
+  "excluded_later_additions": [
+    "If a product page exposes selectable variants, verify that the chosen variant updates the displayed item state and purchase summary before proceeding; if the change is not clearly reflected, treat the variant as unconfirmed."
+  ],
+  "state_time": "after same-batch REMOVE/AGREE, immediately before the sole EDIT",
+  "reconstruction_proof": [
+    "Exactly one applied EDIT at the final step.",
+    "All step-42 texts other than the edited old_text survive unchanged.",
+    "One new ADD text appears after the EDIT and is excluded.",
+    "Repository applies REMOVE, then AGREE, then EDIT, then ADD; sorting/pruning follows.",
+    "No other pre-existing text disappeared, so no dead pre-EDIT rule is missing.",
+    "Target old_count=29 is directly recorded; all other counts are unchanged after the EDIT."
+  ],
+  "source_sha256": "7c3670fae9977d5b67357cfc04bfd62449dede2baa88008fe52a611a76d9e5be",
+  "data_license": "CC-BY-4.0"
+}
