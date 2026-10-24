@@ -4,11 +4,11 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def module(name,path):
     spec=importlib.util.spec_from_file_location(name,ROOT/path);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
-def read(path):return json.loads((ROOT/path).read_text())
+def read(path):return json.loads((ROOT/path).read_text(encoding="utf-8"))
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument("--upstream",type=Path);a=p.parse_args()
     security=module("security_scan","tools/security_scan.py").scan(ROOT);assert security["passed"],security["findings"]
-    for path in ROOT.rglob("*.py"):compile(path.read_text(),str(path),"exec")
+    for path in ROOT.rglob("*.py"):compile(path.read_text(encoding="utf-8"),str(path),"exec")
     frozen=read("results/mechanism/frozen_pre_edit_state.json");expected=read("results/mechanism/shared_pre_edit_replay.json")
     branches={}
     for policy,count in [("inherit",frozen["old_count"]+1),("reset",2)]:
@@ -44,19 +44,19 @@ def main():
     assert sum(r["control_visible"]=="False" and r["terminal"]=="False" and r["before_text_sha256"]==r["after_text_sha256"] for r in purchases)==11
     broken=[]
     for md in ROOT.rglob("*.md"):
-        for link in re.findall(r"\[[^\]]*\]\(([^)]+)\)",md.read_text()):
+        for link in re.findall(r"\[[^\]]*\]\(([^)]+)\)",md.read_text(encoding="utf-8")):
             if re.match(r"(?:https?://|mailto:|#)",link):continue
             path=link.split("#",1)[0]
             if path and not (md.parent/path).exists():broken.append((str(md.relative_to(ROOT)),link))
     assert not broken,broken
-    readme=(ROOT/"README.md").read_text()
+    readme=(ROOT/"README.md").read_text(encoding="utf-8")
     for value in ["old count 29","count 30/rank 2","count 2/rank 15","pooled A/A 0.5732","A/B 0.5735",
                   "inherit 0/50","reset 1/50","p = 1.0","96/100","11/15","14 genuine option"]:assert value in readme,value
-    assert "Zhijing Wu" in (ROOT/"LICENSE").read_text() and "CC BY 4.0" in (ROOT/"upstream/README.md").read_text()
+    assert "Zhijing Wu" in (ROOT/"LICENSE").read_text(encoding="utf-8") and "CC BY 4.0" in (ROOT/"upstream/README.md").read_text(encoding="utf-8")
     cff_status="structure checked without optional YAML"
     try:
         import yaml
-        cff=yaml.safe_load((ROOT/"CITATION.cff").read_text())
+        cff=yaml.safe_load((ROOT/"CITATION.cff").read_text(encoding="utf-8"))
         assert cff["cff-version"]=="1.2.0" and cff["authors"]==[{"given-names":"Zhijing","family-names":"Wu"}]
         assert len(cff["references"][0]["authors"])==7 and cff["license"]=="MIT";cff_status="YAML syntax and citation attribution checked"
     except ImportError:pass

@@ -17,7 +17,7 @@ def scan(root,tracked=False):
         rel=str(p.relative_to(root));name=p.name
         if name==".env" or p.suffix in (".env",".log",".pyc") or any(x in p.relative_to(root).parts for x in ("__pycache__",".venv","venv","cache","raw_private")) or name.startswith(("credentials","secrets")):
             findings.append({"file":rel,"category":"excluded_runtime_file"})
-        try:text=p.read_text()
+        try:text=p.read_text(encoding="utf-8")
         except UnicodeDecodeError:findings.append({"file":rel,"category":"unexpected_binary"});continue
         for category,rx in PATTERNS.items():
             if rx.search(text):findings.append({"file":rel,"category":category})
